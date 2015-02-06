@@ -51,7 +51,7 @@ func main() {
 }
 
 func IsContainSushi(text string) (b bool) {
-	if m, _ := regexp.MatchString("寿司|スシ|鮨|寿し|🍣|sushi", text); !m {
+	if m, _ := regexp.MatchString("寿司|スシ|鮨|寿し|🍣|[sS][uU][sS][hH][iI]", text); !m {
 		return false
 	}
 	return true
