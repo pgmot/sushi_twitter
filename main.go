@@ -43,7 +43,7 @@ func main() {
 	for {
 		status := <-timeline.Listen()
 
-		if IsContainSushi(status.Text) && !status.Favorited && !status.Retweeted {
+		if IsContainSushi(status.Text) {
 			api.Favorite(status.Id)
 		}
 		fmt.Println(status.Text)
