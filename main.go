@@ -29,15 +29,24 @@ func main() {
 	for {
 		status := <-timeline.Listen()
 
-		if IsContainSushi(status.Text) {
-			api.Favorite(status.Id)
+		if isContainSushi(status.Text) {
+			rt, err := api.Favorite(status.Id)
+			fmt.Println(rt)
+			fmt.Println(err)
 		}
 		fmt.Println(status.Text)
 	}
 }
 
-func IsContainSushi(text string) (b bool) {
+func isContainSushi(text string) (b bool) {
 	if m, _ := regexp.MatchString("寿司|スシ|鮨|寿し|🍣|[sS][uU][sS][hH][iI]", text); !m {
+		return false
+	}
+	return true
+}
+
+func isContainMot(text string) (b bool) {
+	if m, _ := regexp.MatchString("MOT|mot", text); !m {
 		return false
 	}
 	return true
