@@ -30,7 +30,4 @@ twitter_sushi
 
 .env
 
-Godeps/Readme
-Godeps/_workspace
-
 sushi_twitter
