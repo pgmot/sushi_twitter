@@ -1,33 +1,19 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/ChimeraCoder/anaconda"
+	_ "github.com/joho/godotenv/autoload"
 	"github.com/otiai10/twistream"
-	"io/ioutil"
+	"os"
 	"regexp"
 )
 
-type Config struct {
-	ConsumerKey       string `json:"consumerKey"`
-	ConsumerSecret    string `json:"consumerSecret"`
-	AccessToken       string `json:"accessToken"`
-	AccessTokenSecret string `json:"accessTokenSecret"`
-}
-
 func main() {
-	file, err := ioutil.ReadFile("config.json")
-	if err != nil {
-		panic(err)
-	}
-	var config Config
-	json.Unmarshal(file, &config)
-
-	consumerKey := config.ConsumerKey
-	consumerSecret := config.ConsumerSecret
-	accessToken := config.AccessToken
-	accessTokenSecret := config.AccessTokenSecret
+	consumerKey := os.Getenv("CONSUMER_KEY")
+	consumerSecret := os.Getenv("CONSUMER_SECRET")
+	accessToken := os.Getenv("ACCESS_TOKEN")
+	accessTokenSecret := os.Getenv("ACCESS_TOKEN_SECRET")
 	timeline, _ := twistream.New(
 		"https://userstream.twitter.com/1.1/user.json",
 		consumerKey,

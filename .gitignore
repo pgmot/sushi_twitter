@@ -27,3 +27,8 @@ _testmain.go
 
 config.json
 twitter_sushi
+
+.env
+
+Godeps/Readme
+Godeps/_workspace
